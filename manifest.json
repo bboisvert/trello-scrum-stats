@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+
+  "name": "ScrumTrello",
+  "description": "This extension computes statistics on trello cards used in scrum process",
+  "version": "1.0",
+
+  "browser_action": {
+    //"matches": ["*://*.google.fr/*"],
+    "default_icon": "icons/icon19.png"
+    //"default_popup": "popup.html"
+  },
+  "background" : {
+    "scripts" : ["background.js"]
+  },
+  "permissions": [
+    "activeTab",
+    "*://*.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.google.fr/*", "*://*.trello.com/*"],
+      //"run_at" : "document_end",
+      "js": ["jquery-2.2.1.min.js"]
+    }
+  ]
+}
