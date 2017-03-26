@@ -21,7 +21,8 @@
     {
       "matches": ["*://*.google.fr/*", "*://*.trello.com/*"],
       //"run_at" : "document_end",
-      "js": ["jquery-2.2.1.min.js"]
+      "css": ["modal.css"],
+      "js": ["jquery-2.2.1.min.js", "bootstrap.min.js", "jquery-ui.min.js"]
     }
   ],
   "icons": {
