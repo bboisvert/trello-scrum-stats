@@ -22,7 +22,7 @@
       "matches": ["*://*.trello.com/*"],
       //"run_at" : "document_end",
       "css": ["styles/modal.css", "styles/stats.css"],
-      "js": ["parseAndComputeFunctions.js", "jquery-2.2.1.min.js", "bootstrap.min.js"]
+      "js": ["parseAndComputeFunctions.js", "jquery-2.2.1.min.js"]
     }
   ],
   "icons": {
