@@ -1,21 +1,17 @@
 //$.map($('.js-list-content').has('h2:contains("Sprint 5")').find('.list-card-details').has('.card-label-green').has('span:contains("BB")').find('a'), function (element) { var n = Number(($(element).text()).slice(-2, -1)); return isNaN(n) ? 0 : n }).reduce(function(a, b) { return a + b; }, 0);
 
-//console.log("prout");
-var unitesRestantesSprins5et6 = statsSprint("Sprint 5").restantes + statsSprint("Sprint 6").restantes;
-var unitesRestantesSprins6et7 = statsSprint("Sprint 6").restantes + statsSprint("Sprint 7").restantes;
-
-
 
 var contentSprint = function(sprint){
+  var sprintStats = computeSprintStats(sprint)
   return "<div class=\"Sprint\"'><h3>"+sprint+"</h3>"
       + "<ul>" +
-    "<li>Total unites: "+statsSprint(sprint).total+"</li>" +
-    "<li>Unités terminées: "+statsSprint(sprint).terminees+"</li>" +
-    "<li>Unités en cours: "+statsSprint(sprint).enCours+"</li>" +
-    "<li>Unités restantes: "+statsSprint(sprint).restantes+"</li>" +
-    "<li>Nombre de jours-homme: "+statsSprint(sprint).nbJoursHomme+"</li>" +
-    "<li>Vélocité j/U: "+statsSprint(sprint).velocite.jByU+"</li>" +
-    "<li>Vélocité U/j: "+statsSprint(sprint).velocite.uByJ+"</li>" +
+    "<li>Total unites: "+sprintStats.total+"</li>" +
+    "<li>Unités terminées: "+sprintStats.terminees+"</li>" +
+    "<li>Unités en cours: "+sprintStats.enCours+"</li>" +
+    "<li>Unités restantes: "+sprintStats.restantes+"</li>" +
+    "<li>Nombre de jours-homme: "+sprintStats.nbJoursHomme+"</li>" +
+    "<li>Vélocité j/U: "+sprintStats.velocite.jByU+"</li>" +
+    "<li>Vélocité U/j: "+sprintStats.velocite.uByJ+"</li>" +
     "</ul>" +
     "</div>";
 };
