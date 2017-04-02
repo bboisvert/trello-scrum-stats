@@ -15,14 +15,14 @@
   },
   "permissions": [
     "activeTab",
-    "*://*.google.com/*"
+    "https://trello.com/*"
   ],
   "content_scripts": [
     {
-      "matches": ["*://*.google.fr/*", "*://*.trello.com/*"],
+      "matches": ["*://*.trello.com/*"],
       //"run_at" : "document_end",
-      "css": ["modal.css"],
-      "js": ["jquery-2.2.1.min.js", "bootstrap.min.js", "jquery-ui.min.js"]
+      "css": ["styles/modal.css", "styles/stats.css"],
+      "js": ["parseAndComputeFunctions.js", "jquery-2.2.1.min.js", "bootstrap.min.js"]
     }
   ],
   "icons": {
