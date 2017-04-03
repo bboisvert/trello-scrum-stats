@@ -6,28 +6,33 @@
  * @returns {string}
  */
 var contentSprint = function(sprint){
-  var sprintStats = computeSprintStats(sprint)
+  var sprintStats = computeSprintStats(sprint);
 
-  var sprintTitle = sprint.find('.list-header-name').text();
-  console.log("Title ", sprintTitle);
+  if (sprintStats) {
+    var sprintTitle = sprint.find('.list-header-name').text();
+    console.log("Title ", sprintTitle);
 
-  var sprintNumberRegex = /(Sprint\s*\d+)/g;
-  var match = sprintNumberRegex.exec(sprintTitle);
-  var sprintNumber = match ? match[1] : "No number";
+    var sprintNumberRegex = /(Sprint\s*\d+)/g;
+    var match = sprintNumberRegex.exec(sprintTitle);
+    var sprintNumber = match ? match[1] : "No number";
 
-  console.log("sprint : ", sprintTitle);
+    console.log("sprint : ", sprintTitle);
 
-  return "<div class=\"Sprint\"'><h3>"+sprintNumber+"</h3>"
+    return "<div class=\"Sprint\"'><h3>"+sprintNumber+"</h3>"
       + "<ul>" +
-    "<li>Total unites: "+sprintStats.total+"</li>" +
-    "<li>Unités terminées: "+sprintStats.terminees+"</li>" +
-    "<li>Unités en cours: "+sprintStats.enCours+"</li>" +
-    "<li>Unités restantes: "+sprintStats.restantes+"</li>" +
-    "<li>Nombre de jours-homme: "+sprintStats.nbJoursHomme+"</li>" +
-    "<li>Vélocité j/U: "+sprintStats.velocite.jByU+"</li>" +
-    "<li>Vélocité U/j: "+sprintStats.velocite.uByJ+"</li>" +
-    "</ul>" +
-    "</div>";
+      "<li>Total unites: "+sprintStats.total+"</li>" +
+      "<li>Unités terminées: "+sprintStats.terminees+"</li>" +
+      "<li>Unités en cours: "+sprintStats.enCours+"</li>" +
+      "<li>Unités restantes: "+sprintStats.restantes+"</li>" +
+      "<li>Nombre de jours-homme: "+sprintStats.nbJoursHomme+"</li>" +
+      "<li>Vélocité j/U: "+sprintStats.velocite.jByU+"</li>" +
+      "<li>Vélocité U/j: "+sprintStats.velocite.uByJ+"</li>" +
+      "</ul>" +
+      "</div>";
+  } else {
+    return "";
+  }
+
 };
 
 var sprints = $('.js-list-content').has('h2:contains(Sprint)');
@@ -66,7 +71,7 @@ var mod = '<div id="modal1" class="modalmask">'
   +'</div>';
 */
 
-var mod = '<div id="myModal" class="modal">'
+var mod = '<div id="trelloScrumStatsModal" class="modal">'
 +'  <div class="modal-content">'
 +'  <div class="modal-header">'
 +'  <span class="close">&times;</span>'
@@ -88,6 +93,9 @@ dialog.querySelector("button").addEventListener("click", function() {
 dialog.showModal()
   */
 //document.body.innerHTML += mod;
+
+// remove old #trelloScrumStatsModal if exists
+$('#trelloScrumStatsModal').remove();
 $('body').prepend(mod);
 
 /*
@@ -129,7 +137,7 @@ console.log("prout");
 
 
 // Get the modal
-var modal = document.getElementById('myModal');
+var modal = document.getElementById('trelloScrumStatsModal');
 
 
 // Get the <span> element that closes the modal
