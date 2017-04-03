@@ -1,9 +1,23 @@
 //$.map($('.js-list-content').has('h2:contains("Sprint 5")').find('.list-card-details').has('.card-label-green').has('span:contains("BB")').find('a'), function (element) { var n = Number(($(element).text()).slice(-2, -1)); return isNaN(n) ? 0 : n }).reduce(function(a, b) { return a + b; }, 0);
 
-
+/**
+ * Computes the stats of one sprint
+ * @param sprint JQuery Objet of one Trello column
+ * @returns {string}
+ */
 var contentSprint = function(sprint){
   var sprintStats = computeSprintStats(sprint)
-  return "<div class=\"Sprint\"'><h3>"+sprint+"</h3>"
+
+  var sprintTitle = sprint.find('.list-header-name').text();
+  console.log("Title ", sprintTitle);
+
+  var sprintNumberRegex = /(Sprint\s*\d+)/g;
+  var match = sprintNumberRegex.exec(sprintTitle);
+  var sprintNumber = match ? match[1] : "No number";
+
+  console.log("sprint : ", sprintTitle);
+
+  return "<div class=\"Sprint\"'><h3>"+sprintNumber+"</h3>"
       + "<ul>" +
     "<li>Total unites: "+sprintStats.total+"</li>" +
     "<li>Unités terminées: "+sprintStats.terminees+"</li>" +
@@ -16,6 +30,14 @@ var contentSprint = function(sprint){
     "</div>";
 };
 
+var sprints = $('.js-list-content').has('h2:contains(Sprint)');
+
+var content2="";
+sprints.each(function (){
+  content2 += contentSprint($( this ));
+});
+
+/*
 // Build the content of the modal
 var content2=
     contentSprint("Sprint 4")+
@@ -27,7 +49,7 @@ var content2=
     contentSprint("Sprint 10")+
     contentSprint("Sprint 13")
   ;
-
+*/
 
 
 
@@ -48,7 +70,7 @@ var mod = '<div id="myModal" class="modal">'
 +'  <div class="modal-content">'
 +'  <div class="modal-header">'
 +'  <span class="close">&times;</span>'
-+'<h2>Modal Header</h2>'
++'<h2>Project velocity</h2>'
 +'</div>'
 //+     '<span class="close">&times;</span>'
 //+'  <a href="#close" title="Close" class="close">X</a>'

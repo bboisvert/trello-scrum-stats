@@ -24,10 +24,9 @@ var extractValueFromCardTitle = function (cardTitle){
  * @param sprint is the name of one sprint. Name has to be contained in the begining of a column title
  * @returns {{total: *, terminees: *, enCours: *, restantes: number, nbJoursHomme: (Blob|ArrayBuffer|Array.<T>|string|*|jQuery), velocite: {jByU: string, uByJ: string}}}
  */
-var computeSprintStats = function(sprint) {
-  console.log("Sprint: "+sprint);
+var computeSprintStats = function(sprintDOM) {
   var sommeUnitesSprint =
-    $.map($('.js-list-content').has('h2:contains('+sprint+')') // select the sprint
+    $.map(sprintDOM // select the sprint
       .find('.list-card-details').has('span:contains("")').find('a'), // map on each card title in the sprint
       extractValueFromCardTitle)
       .reduce(
@@ -37,19 +36,18 @@ var computeSprintStats = function(sprint) {
         0
       );
 
-  var sommeUnitesTerminees = $.map($('.js-list-content').has('h2:contains('+sprint+')').find('.list-card-details').has('.card-label-green').has('span:contains("")').find('a'), extractValueFromCardTitle).reduce(function(a, b) { return a + b; }, 0);
-  var sommeUnitesEnCours = $.map($('.js-list-content').has('h2:contains('+sprint+')').find('.list-card-details').has('.card-label-yellow').has('span:contains("")').find('a'), extractValueFromCardTitle).reduce(function(a, b) { return a + b; }, 0);
+  var sommeUnitesTerminees = $.map(sprintDOM.find('.list-card-details').has('.card-label-green').has('span:contains("")').find('a'), extractValueFromCardTitle).reduce(function(a, b) { return a + b; }, 0);
+  var sommeUnitesEnCours = $.map(sprintDOM.find('.list-card-details').has('.card-label-yellow').has('span:contains("")').find('a'), extractValueFromCardTitle).reduce(function(a, b) { return a + b; }, 0);
   var unitesRestantesSprint5 = sommeUnitesSprint - sommeUnitesTerminees;
 
-  var joursHommeRegex = /(\d+\.?\d*)\s*j\-h$/g;
-  var sprintTitleLine = $('.js-list-content').has('h2:contains('+sprint+')').find('h2').first().text();
-  console.log("title: ", sprintTitleLine);
+  var joursHommeRegex = /(\d+[\.|,]?\d*)\s*j\-h$/g;
+  var sprintTitleLine = sprintDOM.find('h2').first().text();
+
   var matches = joursHommeRegex.exec(sprintTitleLine);
-  console.log("matches", matches);
-  nbJoursHomme = matches ? matches[1] : 0;
+
+  nbJoursHomme = matches ? matches[1].replace(",",".") : 0;
   //var nbJoursHomme = $('.js-list-content').has('h2:contains('+sprint+')').find('h2').first().text().slice(-6, -4);
-  console.log($('.js-list-content').has('h2:contains('+sprint+')').find('h2'));
-  console.log("nb jours homme ", nbJoursHomme);
+
 
   return {
     total: sommeUnitesSprint,
