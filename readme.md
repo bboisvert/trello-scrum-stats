@@ -4,7 +4,7 @@ Ce projet a pour but d'aggréger et de faire des statistiques sur des cartes tre
 
 # Installation et utilisation
 
-# Comment est né ce projet ?
+<!-- # Comment est né ce projet ?
 
 Un seul point d'entrée pour les développeurs et le scrum master, représentant tout le projet dans un tableau trello.
 Le but est de:
@@ -12,7 +12,7 @@ Le but est de:
 * minimiser les interactions avec les outils
 * avoir une visibilité rapide et claire de tout le projet
 
-# Pourquoi le publier ?
+# Pourquoi le publier ? -->
 
 # Technologies utilisés
 * JQuery
