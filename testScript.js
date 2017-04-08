@@ -19,15 +19,15 @@ var contentSprint = function(sprint){
     console.log("sprint : ", sprintTitle);
 
     return "<div class=\"Sprint\"'><h3>"+sprintNumber+"</h3>"
-      + "<ul>" +
-      "<li>Total unites: "+sprintStats.total+"</li>" +
-      "<li>Unités terminées: "+sprintStats.terminees+"</li>" +
-      "<li>Unités en cours: "+sprintStats.enCours+"</li>" +
-      "<li>Unités restantes: "+sprintStats.restantes+"</li>" +
-      "<li>Nombre de jours-homme: "+sprintStats.nbJoursHomme+"</li>" +
-      "<li>Vélocité j/U: "+sprintStats.velocite.jByU+"</li>" +
-      "<li>Vélocité U/j: "+sprintStats.velocite.uByJ+"</li>" +
-      "</ul>" +
+      + "<table class=\"sprintStatsTable\">" +
+      "<tr><td>Total unites: </td><td class=\"sprintStatValue\">"+sprintStats.total+"</td></tr>" +
+      "<tr><td>Unités terminées: </td><td class=\"sprintStatValue\">"+sprintStats.terminees+"</td></tr>" +
+      "<tr><td>Unités en cours: </td><td class=\"sprintStatValue\">"+sprintStats.enCours+"</td></tr>" +
+      "<tr><td>Unités restantes: </td><td class=\"sprintStatValue\">"+sprintStats.restantes+"</td></tr>" +
+      "<tr><td>Nombre de jours-homme: </td><td class=\"sprintStatValue\">"+sprintStats.nbJoursHomme+"</td></tr>" +
+      "<tr><td>Vélocité j/U: </td><td class=\"sprintStatValue\">"+sprintStats.velocite.jByU+"</td></tr>" +
+      "<tr><td>Vélocité U/j: </td><td class=\"sprintStatValue\">"+sprintStats.velocite.uByJ+"</td></tr>" +
+      "</table>" +
       "</div>";
   } else {
     return "";
@@ -75,7 +75,7 @@ var mod = '<div id="trelloScrumStatsModal" class="modal">'
 +'  <div class="modal-content">'
 +'  <div class="modal-header">'
 +'  <span class="close">&times;</span>'
-+'<h2>Project velocity</h2>'
++'<h2>Vélocité projet</h2>'
 +'</div>'
 //+     '<span class="close">&times;</span>'
 //+'  <a href="#close" title="Close" class="close">X</a>'

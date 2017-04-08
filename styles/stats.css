@@ -5,3 +5,18 @@
     /*    background: #c00;*/
     margin: 0 5px;
 }
+
+
+.sprintStatsTable {
+    border: 1px solid #D6DADC;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(214, 218, 220);
+}
+.sprintStatsTable td {
+    border: none;
+}
+
+.sprintStatValue {
+    text-align: right;
+}
