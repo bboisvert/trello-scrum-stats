@@ -35,7 +35,7 @@ var computeSprintStats = function(sprintDOM) {
 
   var sommeUnitesSprint =
     $.map(sprintDOM // select the sprint
-      .find('.list-card-details').has('span:contains("")').find('a'), // map on each card title in the sprint
+      .find('.list-card-details').has('span:contains("")').find('.list-card-title'), // map on each card title in the sprint
       extractValueFromCardTitle)
       .reduce(
         function(a, b) {
@@ -44,8 +44,8 @@ var computeSprintStats = function(sprintDOM) {
         0
       );
 
-  var sommeUnitesTerminees = $.map(sprintDOM.find('.list-card-details').has('.card-label-green').has('span:contains("")').find('a'), extractValueFromCardTitle).reduce(function(a, b) { return a + b; }, 0);
-  var sommeUnitesEnCours = $.map(sprintDOM.find('.list-card-details').has('.card-label-yellow').has('span:contains("")').find('a'), extractValueFromCardTitle).reduce(function(a, b) { return a + b; }, 0);
+  var sommeUnitesTerminees = $.map(sprintDOM.find('.list-card-details').has('.card-label-green').has('span:contains("")').find('.list-card-title'), extractValueFromCardTitle).reduce(function(a, b) { return a + b; }, 0);
+  var sommeUnitesEnCours = $.map(sprintDOM.find('.list-card-details').has('.card-label-yellow').has('span:contains("")').find('.list-card-title'), extractValueFromCardTitle).reduce(function(a, b) { return a + b; }, 0);
   var unitesRestantesSprint5 = sommeUnitesSprint - sommeUnitesTerminees;
 
 
